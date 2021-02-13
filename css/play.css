@@ -1,0 +1,296 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	background-color: #15110e;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.focus-gradient {
+	background: radial-gradient(rgb(111, 90, 74, .7), rgb(111, 90, 74, .5), rgb(111, 90, 74, .3), rgb(111, 90, 74, .1), rgb(111, 90, 74, 0), rgb(111, 90, 74, 0), rgb(111, 90, 74, 0));
+}
+
+.focus-object {
+	border: 1px dashed #85f5f0;
+}
+
+.darker-on-rectangle {
+	margin: 10px 0px;
+	background-color: #9b6c40;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.two-column-list {
+	display: flex;
+  justify-content: center;
+	margin: 10px 0px;
+	text-align: start;
+}
+
+.two-column-list > div {
+	width: 50%;
+	padding: 10px 20px;
+}
+
+.simply-notification {
+	position: fixed;
+	max-width: 40%;
+	max-height: 30%;
+	padding: 10px 20px;
+	z-index: 30050;
+	top: 30%;
+	left: 30%;
+	text-align: center;
+	overflow: auto;
+}
+
+.simply-notification-mobile {
+	position: fixed;
+	z-index: 30050;
+	max-width: 80%;
+	max-height: 30%;
+	padding: 10px 20px;
+	top: 30%;
+	left: 10%;
+	text-align: center;
+	overflow: auto;
+}
+
+.inside-area {
+	position: absolute;
+	height: inherit;
+}
+
+.main-text-color {
+	color: #000;
+}
+
+.low-text {
+	font: 10px sans-serif;
+}
+
+.normal-text {
+	font: 14px sans-serif;
+}
+
+.normal-text-mobile {
+	font: 14px sans-serif;
+}
+
+.head-text {
+	font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.rectangle {
+	background-color: #bb8b54;
+	background-image: url();
+	border: 2px solid #0f0905;
+	border-radius: 5px;
+}
+
+input {
+	border-radius: 5px;
+	background-color: #d5b38c;
+	border-top: 2px solid #564323;
+	border-right: 2px solid #564323;
+	border-bottom: none;
+	border-left: none;
+	padding-left: 5px;
+	color: #324100;
+	height: 17px;
+	margin: 2px;
+}
+
+button {
+	position: relative;
+	top: -2px;
+  background-color: #26201a;
+  border-radius: 5px;
+  display: inline-block;
+  border-top: solid 2px #564323;
+  border-right: solid 2px #564323;
+	border-bottom: none;
+	border-left: none;
+  padding-bottom: 2px;
+  overflow: hidden;
+  color: #bb8b54;
+  cursor: pointer;
+	margin: 2px;
+}
+
+#help {
+	overflow-y: auto;
+	top: 10px;
+	max-height: 80%;
+}
+
+#ratio {
+	margin: auto;
+}
+
+#scroll {
+	width: 100%;
+	overflow-x: scroll;
+}
+
+#sky {
+	background: #97c0d9;
+	overflow: hidden;
+	width: inherit;
+}
+
+#area {
+	position: relative;
+	background: #788837;
+	bottom: 0px;
+	width: inherit;
+}
+
+#other {
+	text-align: center;
+	display: flex;
+  justify-content: center;
+}
+
+#connection-lost {
+  width: 100%;
+  position: fixed;
+  z-index: 40000;
+  text-align: center;
+  margin-top: 20%;
+	display: none;
+	border-left: none;
+  border-right: none;
+  border-radius: unset;
+}
+
+#list {
+	text-align: center;
+	max-height: 400px;
+	overflow: auto;
+}
+
+.take-attention {
+	position: absolute;
+  top: 20px;
+  right: 45%;
+}
+
+.error {
+	color: #bb4949;
+	border: 2px solid #bb4949;
+  background-color: #230909;
+	border-radius: 10px;
+  padding: 2px 10px;
+}
+
+.error-input {
+	background-color: #c36161;
+  border-top-color: #4e2323;
+  border-right-color: #4e2323;
+}
+
+.list-object {
+	margin: 5px 0px;
+}
+
+.list-object > img {
+	height: 50px;
+}
+
+.placer {
+	position: absolute;
+}
+
+.part-of-interface {
+	position: relative;
+	top: -10px;
+	z-index: 30030;
+	text-align: center;
+	margin: 0 2px;
+	padding: 2px;
+}
+
+
+.up-interface {
+  top: -20px;
+}
+
+.clicked-interface {
+  cursor: pointer;
+}
+
+.part-of-actions {
+	display: inline-block;
+	margin: 0 5px;
+}
+
+.msg {
+	margin-top: 1px;
+	max-width: inherit;
+}
+
+.msg-inside {
+	padding: 2px;
+	display: inline-block;
+	max-width: inherit;
+	word-wrap: break-word;
+}
+
+.hight-interface {
+	border-top: solid 2px #0f0905;
+	background-color: #26201a;
+}
+
+.low-interface {
+	color: #bb8b54;
+}
+
+.part-of-low-interface {
+	overflow: auto;
+	margin: 10px 20px 100px 20px;
+  text-align: center;
+  width: 30%;
+}
+
+.centered-flex {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#interface {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%; bottom: 0px;
+	z-index: 30050;
+}
+
+#sleep {
+	position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0, .8);
+	z-index: 30100;
+	text-align: center;
+	color: #ea940f;
+	display: none;
+}

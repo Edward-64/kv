@@ -1,0 +1,13 @@
+*odt#
+
+/node_modules/
+
+#На локальной машине иногда используется для отладки
+/test.js
+
+/db/cats/*
+/db/locs/*
+/db/other.json
+/db/mail/*
+
+/img/skin/*

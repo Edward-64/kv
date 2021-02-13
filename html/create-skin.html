@@ -1,0 +1,74 @@
+<div class="centered-flex">
+  <button onclick="app.creatingSkin.turnDirection(this)">→</button>
+  <button onclick="app.creatingSkin.flowSprite(this)" style="min-width: 70px;">Стоит</button>
+  <button onclick="app.creatingSkin.resizeSVG(0.5)">-</button>
+  <button onclick="app.creatingSkin.resizeSVG(1.5)">+</button>
+</div>
+<div style="text-align: center;">
+  <object id="svg-object" data="/img/skin?r=generator" type="image/svg+xml">
+    	Ваш браузер не поддерживает SVG либо изображение недоступно
+	</object>
+</div>
+<div>
+  <div class="centered-flex">
+    <div style="width: 50%;padding-right: 10px;">
+      Оттенок шерсти
+    </div>
+    <div class="left-flex" style="width: 50%;">
+      <div class="cut-tree skin-color" style="background-color: #d2682d;" data-h="21" onclick="app.creatingSkin.serveFurColor(this)"></div>
+      <div class="cut-tree skin-color" style="background-color: #668099;" data-h="209" onclick="app.creatingSkin.serveFurColor(this)"></div>
+      <div class="cut-tree skin-color" style="background-color: #bf5940;" data-h="12" onclick="app.creatingSkin.serveFurColor(this)"></div>
+    </div>
+  </div>
+  <div class="centered-flex">
+    <div style="width: 50%;padding-right: 10px;">
+      Яркость
+    </div>
+    <div style="width: 50%;">
+      <input type="range" id="lValue" min="0" max="100" style="width: 90%;" oninput="app.creatingSkin.serveFurL()"></div>
+    </div>
+  <div class="centered-flex">
+    <div style="width: 50%;padding-right: 10px;">
+      Контрастность</div>
+    <div style="width: 50%">
+      <input type="range" id="sValue" min="0" max="100" style="width: 90%;" oninput="app.creatingSkin.serveFurS()">
+    </div>
+  </div>
+  <div class="centered-flex">
+    <div style="width: 50%;padding-right: 10px;">
+      Цвет глаз
+    </div>
+    <div style="width: 50%;">
+      <div class="left-flex">
+        <div class="cut-tree skin-color" style="background-color: #7d5240;" data-color="6" data-hex="#7d5240" onclick="app.creatingSkin.eyeColor(this)"></div>
+        <div class="cut-tree skin-color" style="background-color: #d49326;" data-color="5" data-hex="#d49326" onclick="app.creatingSkin.eyeColor(this)"></div>
+        <div class="cut-tree skin-color" style="background-color: #e4a560;" data-color="1" data-hex="#e4a560" onclick="app.creatingSkin.eyeColor(this)"></div>
+      </div>
+      <div class="left-flex">
+        <div class="cut-tree skin-color" style="background-color: #548948;" data-color="2" data-hex="#548948" onclick="app.creatingSkin.eyeColor(this)"></div>
+        <div class="cut-tree skin-color" style="background-color: #589bcf;" data-color="4" data-hex="#589bcf" onclick="app.creatingSkin.eyeColor(this)"></div>
+        <div class="cut-tree skin-color" style="background-color: #9dc4e1;" data-color="3" data-hex="#9dc4e1" onclick="app.creatingSkin.eyeColor(this)"></div>
+      </div>
+    </div>
+  </div>
+  <div class="centered-flex">
+    <div style="width: 50%;padding-right: 10px;">
+      Дайте имя своему персонажу. Можно использовать только русские буквы.
+    </div>
+    <div style="width: 50%;"><input id="characterName" style="width: 90%;"></div>
+  </div>
+
+  <div class="centered-flex">
+    <div style="width: 50%;padding-right: 10px;">
+      Кошка или кот?
+    </div>
+    <div style="width: 50%;" class="left-flex">
+      <div style="margin-right: 5px;"><input type="radio" id="create-sex" name="sex"> Кошка</div>
+      <div><input type="radio" name="sex"> Кот</div>
+    </div>
+  </div>
+  <div class="centered-flex">
+    <button id="save-and-play" onclick="app.creatingSkin.save()">Сохранить и играть!</button>
+    <div id="create-skin-error" style="color: #800808; display: none"></div>
+  </div>
+</div>

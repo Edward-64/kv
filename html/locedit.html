@@ -1,0 +1,211 @@
+<object id="object" data="/img/play/landscape?r=1" type="image/svg+xml" width="10" height="10" style="position:absolute;z-index: -1;">
+	Ваш браузер не поддерживает SVG либо изображение недоступно
+</object>
+<div id="scroll">
+	<div id="ratio" class="normal-text unselectable">
+		<div id="sky">
+			<div id="empty-space"></div>
+			<div id="area">
+				<div id="animals" class="inside-area" style="pointer-events: none"></div>
+				<div id="placers" class="inside-area"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="low-interface">
+	<div style="display: none">
+		<p>Выбери модель объекта</p>
+		<div id="list"></div>
+	</div>
+	<div id="other">
+		<div id="server-part" class="part-of-low-interface">
+			<div class="head-text">Сервер</div>
+			<button id="button-save-location" onclick="game.save()" style="width: 90%">Сохранить локацию</button>
+			<button id="button-upload-file" onclick="game.showUploadingFile()" style="width: 90%">Загрузить статичный объект</button>
+			<form id="upload-file" onsubmit="return false;" style="display: none;">
+				    <input type="file" name="file" style="width: 90%; margin-bottom: 10px; padding: 10px 5px;">
+						<button onclick="game.uploadFile();">Загрузить</button>
+						<button onclick="game.buttonsFromServer('block'); this.parentNode.style.display = 'none';">Назад</button>
+			</form>
+		</div>
+		<div id="part-object" class="part-of-low-interface">
+			<div class="head-text">Объект</div>
+			<div><button id="create-path" style="width: 90%" onclick="game.createNewObject('path')">Создать путь</button></div>
+			<div><button id="create-object" style="width: 90%" onclick="game.createNewObject('landscape')">Создать элемент пейзажа</button></div>
+			<div><button id="edit-object" style="width: 90%" onclick="game.editObject()">Редактировать объект</button></div>
+			<div id="preloader" style="display: none"><img src="/img/site?r=preloader"></div>
+			<div id="choose-object" style="display: none">
+				<p>Нажми на объект, который хочешь отредактировать</p>
+				<button onclick="game.removeObject({hideChoosing: true, showButtons: true})">Отменить</button>
+			</div>
+			<div id="object-view" style="display:none; text-align: start;">
+				<div class="centered-flex">
+					<div><button onclick="game.listObj(-1)">&lt;</button></div>
+					<div id="view-img" style="position: relative;width:192px;height:192px;background: url(/img/play/landscape?r=1) no-repeat -577px 0px / 1730px 192px;">
+						<div id="object-type-is-interface" title="Объект является интерфейсным, поэтому не рекомендуется к использованию." class="take-attention error">!</div>
+					</div>
+					<div><button onclick="game.listObj(1)">&gt;</button></div>
+				</div>
+				<div class="centered-flex"><button style="margin: 10px;" onclick="game.displayingElement(game.layers.list.parentNode)">• • •</button></div>
+				<div class="centered-flex"><div style="width: 50%">x</div><div><input id="input-x-landscape" style="width: 40px" oninput="game.updateObject('x')"></div></div>
+				<div class="centered-flex"><div style="width: 50%">y</div><div><input id="input-y-landscape" style="width: 40px" oninput="game.updateObject('y')"></div></div>
+				<div class="centered-flex"><div style="width: 50%">z</div><div><input id="input-z" style="width: 40px" oninput="game.updateObject('z')"></div></div>
+				<div class="centered-flex"><div style="width: 50%">размер</div><div><input id="input-size" style="width: 40px" oninput="game.updateObject('size')"></div></div>
+				<div class="centered-flex" style="margin-top: 20px">
+					<button onclick="game.context(); game.removeObject({showButtons: true, hideView: true});">Назад</button>
+					<button onclick="game.removeObject({showButtons: true, hideView: true})">Удалить</button>
+				</div>
+			</div>
+			<div id="tmp-object-view" style="display:none; text-align: start;">
+				<p class="centered-flex">Временный объект</p>
+				<div class="centered-flex"><div style="width: 50%">x</div><div><input id="input-x-tmp" style="width: 40px" oninput="game.updateObject('x')"></div></div>
+				<div class="centered-flex"><div style="width: 50%">y</div><div><input id="input-y-tmp" style="width: 40px" oninput="game.updateObject('y')"></div></div>
+				<div class="centered-flex"><div style="width: 50%">z</div><div><input id="input-z-tmp" style="width: 40px" oninput="game.updateObject('z')"></div></div>
+				<div class="centered-flex"><div style="width: 50%">размер</div><div><input id="input-size-tmp" style="width: 40px" oninput="game.updateObject('size')"></div></div>
+				<div class="centered-flex" style="margin-top: 20px">
+					<button onclick="game.context(); game.removeObject({showButtons: true, hideView: true});">Назад</button>
+					<button onclick="game.removeObject({showButtons: true, hideView: true})">Удалить</button>
+				</div>
+				<p id="warning-saving-object-on-server">Не добавленные в коллекцию объекты не появятся на локации после её сохранения.</p>
+				<div class="centered-flex" onclick="game.saveObjectOnServer(this);"><button>Добавить в коллекцию</button></div>
+				<p id="error-saving-object-on-server" class="error" style="display: none"></p>
+			</div>
+			<div id="path-view" style="text-align: start; display: none;">
+				<div class="focus-gradient" style="text-align: center;"><img src="/img/play?r=path" width="100px" height="100px"></div>
+				<div class="centered-flex"><div style="width: 50%">x</div><div><input id="input-x-path" style="width: 45%;" oninput="game.updateObject('x')"></div></div>
+				<div class="centered-flex"><div style="width: 50%">y</div><div><input id="input-y-path" style="width: 45%;" oninput="game.updateObject('y')"></div></div>
+				<div class="centered-flex"><div style="width: 50%">направление</div><div><input id="input-to" style="width: 45%;" oninput="game.updateObject('to')"></div></div>
+				<div class="centered-flex" style="margin-top: 20px">
+					<button onclick="game.context(); game.removeObject({showButtons: true, hideView: true});">Назад</button>
+					<button onclick="game.removeObject({showButtons: true, hideView: true})">Удалить</button>
+				</div>
+			</div>
+		</div>
+		<div class="part-of-low-interface">
+			<div class="head-text">Остальное</div>
+			<div>Название локации</div>
+			<div><input style="width: 90%" id="name-of-loc-input"></div>
+			<div style="margin-top: 20px;">Тип локации</div>
+			<div class="centered-flex" style="height: 60px;">
+				<div><button onclick="game.listArea(-1)">&lt;</button></div>
+				<div id="area-skin-name" style="width: 60%;">Лесная поляна</div>
+				<div><button onclick="game.listArea(1)">&gt;</button></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="interface" class="main-text-color hight-interface">
+	<div title="Справка" class="part-of-interface rectangle clicked-interface" onmousemove="this.classList.add('up-interface')" onmouseout="this.classList.remove('up-interface')" onclick="game.displayingElement(game.help)">
+		<img src="/img/site?r=question" style="margin:2px">
+	</div>
+	<div title="Ctrl + ЛКМ" class="part-of-interface rectangle clicked-interface" onmousemove="this.classList.add('up-interface')" onmouseout="this.classList.remove('up-interface')" onclick="game.turnMoving()">
+		<img src="/img/site?r=move-object" style="margin:2px">
+	</div>
+	<div title="Список объектов" class="part-of-interface rectangle clicked-interface" onmousemove="this.classList.add('up-interface')" onmouseout="this.classList.remove('up-interface')" onclick="game.displayingElement(game.flow.html);">
+		<img src="/img/site?r=list" style="margin:2px">
+	</div>
+	<div class="part-of-interface" style="width: 20px"></div>
+	<div title="Последовательное переключение сезонов" class="part-of-interface rectangle clicked-interface" onmousemove="this.classList.add('up-interface')" onmouseout="this.classList.remove('up-interface')" onclick="game.listSeason();">
+		<img src="/img/site?r=turning-seasons" style="margin:2px">
+	</div>
+	<div title="Зима" class="part-of-interface rectangle clicked-interface" onmousemove="this.classList.add('up-interface')" onmouseout="this.classList.remove('up-interface')" onclick="game.changeSeason(0)">
+		<img src="/img/site?r=winter" style="margin:2px">
+	</div>
+	<div title="Ранняя весна" class="part-of-interface rectangle clicked-interface" onmousemove="this.classList.add('up-interface')" onmouseout="this.classList.remove('up-interface')" onclick="game.changeSeason(1)">
+		<img src="/img/site?r=early-spring" style="margin:2px">
+	</div>
+	<div title="Весна" class="part-of-interface rectangle clicked-interface" onmousemove="this.classList.add('up-interface')" onmouseout="this.classList.remove('up-interface')" onclick="game.changeSeason(2)">
+		<img src="/img/site?r=spring" style="margin:2px">
+	</div>
+	<div title="Лето" class="part-of-interface rectangle clicked-interface" onmousemove="this.classList.add('up-interface')" onmouseout="this.classList.remove('up-interface')" onclick="game.changeSeason(3)">
+		<img src="/img/site?r=summer" style="margin:2px">
+	</div>
+	<div title="Ранняя осень" class="part-of-interface rectangle clicked-interface" onmousemove="this.classList.add('up-interface')" onmouseout="this.classList.remove('up-interface')" onclick="game.changeSeason(4)">
+		<img src="/img/site?r=early-autumn" style="margin:2px">
+	</div>
+	<div title="Осень" class="part-of-interface rectangle clicked-interface" onmousemove="this.classList.add('up-interface')" onmouseout="this.classList.remove('up-interface')" onclick="game.changeSeason(5)">
+		<img src="/img/site?r=autumn" style="margin:2px">
+	</div>
+</div>
+<div id="notification" class="rectangle" style="display: none">
+	<div id="notification-content"></div>
+	<button onclick="this.parentNode.style.display = 'none'">Дальше</button>
+</div>
+<div id="block-interfaces-before-choosing-mode" style="
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 3049;
+    top: 0px;
+"></div>
+<div id="flow-notification" class="unselectable rectangle" style="display: none;">
+	<div id="flow-notification-content-list-of-object"></div>
+	<button onclick="this.parentNode.style.display = 'none'">Закрыть</button>
+</div>
+<div id="choosing-mode" class="rectangle">
+	<div id="process-choosing-mode">
+		<div style="margin: 10px 0px;">Хочешь создать новую локацию или отредактировать существующую?</div>
+		<button onclick="game.chooseMode('new')">Создать</button><button onclick="game.chooseMode('edit')">Отредактировать</button>
+	</div>
+	<div id="choosed-mode-is-edit" style="margin: 10px 0px; display: none">
+		Введи её ID или название
+		<div><input style="width: 90%" id="choosing-location"></div>
+		<button style="margin-top: 10px;" onclick="game.uploadLocation()">Продолжить</button><button onclick="game.chooseMode('new')">Всё же создать новую</button>
+	</div>
+	<p id="choosing-location-error" style="display: none; color: #800808;"></p>
+</div>
+<div class="rectangle simply-notification-mobile" id="help" style="display: none">
+	<div class="two-column-list">
+		<div class="head-text"><p>Установка координат объекта. Способы и ограничения.</p></div>
+		<div>
+			<p>
+				Координаты объекта задаются значениями <code>{x, y, z}</code>, которые ограничены некоторым интервалом.
+				При вводе неправильных значений поле ввода подсветится красным цветом.
+			</p>
+			<div><code>x ∈ [-80; 240]</code></div>
+			<div><code>y ∈ [-∞; 30]</code></div>
+			<div><code>z ∈ [0; 10000) или auto</code></div>
+			<p>
+				<code>x</code> позиционирует объект по горизонтали, <code>y</code> по вертикали, а <code>z</code> задает перспективу.
+				Все игровое поле условно делится на 160 клеток по горизонтали и 27 по вертикали,
+				то есть, к примеру, координаты <code>{0, 0, auto}</code> расположат объект в левом нижнем углу,
+				<code>{160, 27, auto}</code> в правом верхнем углу, <code>{80, 13.5, auto}</code> в середине.
+			</p>
+			<p>
+				Координаты можно задать двумя способами: вводить значения вручную либо перемещать объекты с помощью мыши. Чтобы перейти в режим
+				перемещения, нужно нажать на иконку <img class="rectangle" src="/img/site?r=move-object" style="margin:2px"> или зажать клавишу <code>Ctrl</code>
+				и перетаскивать текущий объект.
+			</p>
+		</div>
+	</div>
+	<div class="two-column-list">
+		<div class="head-text"><p>Z-координата</p></div>
+		<div>
+			<p>
+				Если ввести значение auto или оставить ввод пустым, то Z-координата вычислится автоматически.
+				Чем больше значение Z, тем ближе к экрану расположен текущий объект.
+				Z-координата вычисляется по следующей формуле:
+			</p>
+			<div><code>Z = 3000 - Y * 100</code></div>
+			<p>Например,</p>
+			<div>При <code>Y = 20<br>Z = 3000 - 20 * 100 = 3000 - 2000 = <strong>1000</strong></code></div><br>
+			<div>При <code>Y = -20<br>Z = 3000 - (-20 * 100) = 3000 + 2000 = <strong>5000</strong></code></div>
+			<p>
+				Таким образом, текущий объект можно сделать ближе или дальше любого автоматически позиционированного объекта.
+				Например, при <code>{60, 20, 2}</code> текущий объект будет самым дальним, а при <code>{60, 20, 4000}</code> самым близким.
+				Это может быть удобно для того, чтобы сделать какие-нибудь ветки поверх всего игрового поля или застелить какой-нибудь травой землю.
+				В первом слечае нужно расположить текущий объект примерно в интервале [9000, 10000), а во втором в [0, 300).
+			</p>
+		</div>
+	</div>
+	<div class="two-column-list">
+		<div class="head-text" style="position: relative"><p>Красный восклицательный знак над объектом</p><div class="take-attention error" style="position: static; width: 7px;">!</div></div>
+		<div>
+			<p>
+				Эта иконка предупреждает, что объект является интерфейсным. Это значит, что объекты с таким скином могут быть перемещены
+				или уничтожены игроками в открытом мире. Например, ракушку можно взять, а вереск сорвать. Однако, если создать их
+				в статичном режиме, они будут относиться к классу статичных и взаимодействовать с ними будет невозможно.
+			</p>
+		</div>
+	</div>
+</div>

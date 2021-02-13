@@ -1,0 +1,32 @@
+<form name="activation" onsubmit="return false;">
+  <div class="centered-flex">
+    <div style="width: 30%">Введите псевдоним</div>
+    <div style="width: 30%">
+      <input style="width: 100%" name="alias" autocomplete="off">
+    </div>
+    <div style="width: 30%"></div>
+  </div>
+  <div class="centered-flex">
+    <div style="width: 30%">Введите пароль</div>
+    <div style="width: 30%">
+      <input style="width: 100%" type="password" name="password" autocomplete="off">
+    </div>
+    <div style="width: 30%"></div>
+  </div>
+  <button style="display:none" onclick="app.activation.activeCharacter();"></button>
+</form>
+  <div class="centered-flex">
+    <button id="activation-go" onclick="app.activation.activeCharacter()">Активировать персонажа</button>
+    <div id="activation-error" style="display:none">
+      <div><p id="activation-error-msg" style="color: #800808;"></p></div>
+      <p>Если Вы забыли пароль или псевдоним, с помощью электронной почты, привязанной к Вашему персонажу при создании, можно восстановить персонажа.</p>
+      <form onsubmit="return false;">
+        <input id="activation-recover-pwrd-input" style="margin-top: 5px">
+        <button id="activation-recover-pwrd-button" onclick="app.activation.recoverPassword();" style="margin-top: 5px">Восстановить персонажа</button>
+      </form>
+      <div>
+        <img id="activation-preloader" src="/img/site?r=preloader" style="display:none">
+        <p id="activation-recover-pwrd-result"></p>
+      </div>
+    </div>
+  </div>

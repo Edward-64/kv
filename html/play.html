@@ -1,0 +1,68 @@
+<div id="sleep" onclick="send(107, true)">Вы заснули. Нажмите, чтобы проснуться.</div>
+<div class="error" id="connection-lost">
+	Потеряно соединение с сервером
+	<button id="reconnection" style="margin: 5px auto; display: block;" onclick="game.reconnection(true)">Попробовать восстановить соединение</button><span id="waitreconnection" style="display:none">. Повторить попытку можно через <span id="timeout"></span> секунд<span id="string-timeout"></span>.</span>
+</div>
+<div id="scroll">
+	<div id="ratio" class="normal-text unselectable">
+		<div id="sky">
+			<div id="empty-space"></div>
+			<div id="area">
+				<canvas id="range" style="position: absolute"></canvas>
+				<div id="animals" class="inside-area"></div>
+				<div id="placers" class="inside-area"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="low-interface">
+	<div id="other">
+		<div id="stack" class="part-of-low-interface">
+			<div class="head-text">Очередь</div>
+		</div>
+		<div id="among" class="part-of-low-interface">
+			<div class="head-text">Вокруг меня</div>
+			<div id="empty-among">ничего нет</div>
+		</div>
+		<div class="part-of-low-interface">
+			<div id="more" style="display: none">
+				<div class="head-text" style="position: relative">
+					<span id="more-head">Подробнее</span>
+					<img id="more-edit" src="/img/play?r=pen" style="cursor: pointer; display: inline">
+				</div>
+				<div id="more-content"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="interface" class="main-text-color hight-interface">
+	<div class="part-of-interface rectangle">
+		<div class="centered-flex">
+			<input id="meowing" style="width:65%" autocomplete="off" placeholder="Пишите здесь">
+			<button onclick="game.sendMeow()">Мяукнуть</button>
+		</div>
+	</div>
+	<div class="part-of-interface rectangle clicked-interface" onmousemove="this.classList.add('up-interface')" onmouseout="this.classList.remove('up-interface')" onclick="send(107)">
+		<img src="/img/play?r=sleep" style="margin:2px">
+	</div>
+	<div class="part-of-interface rectangle clicked-interface" onmousemove="this.classList.add('up-interface')" onmouseout="this.classList.remove('up-interface')" onclick="game.turnSit()">
+		<img src="/img/play?r=sit" style="margin:2px">
+	</div>
+</div>
+<div id="notification" class="rectangle" style="display: none">
+	<div id="notification-content" style="margin: 10px 0px;"></div>
+	<button onclick="this.parentNode.style.display = 'none'">Дальше</button>
+</div>
+<div id="knowledge" class="rectangle" style="display: none">
+	<form name="knowledge" style="margin: 10px 0px;">
+		<div>
+			<div>Как тебя зовут?</div>
+	  	<input name="name">
+		</div>
+	  <div>
+			<div>Из какого ты племени, банды, клана или иной группы?</div>
+			<input name="clan">
+		</div>
+	</form>
+	<button onclick="game.sendKnowledge(true)">Ответить</button><button onclick="game.sendKnowledge()">Хотя... Не буду отвечать</button>
+</div>

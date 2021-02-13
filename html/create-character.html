@@ -1,0 +1,22 @@
+<form name="create-character" onsubmit="return false;">
+  <div id="create-character-error" style="position: absolute; width: 30%;right: 4px;color: #800808;background-color: #bb8b54;"></div>
+  <div>
+    <div>Введите псевдоним. Обязательное поле. Псевдоним нужен для активации персонажа, поэтому его нельзя сообщать другим людям. Придумайте такой псевдоним, который Вы хорошо запомните: если забудете пароль, по примерному псевдониму можно будет восстановить доступ к персонажу.</div>
+    <input style="width: 200px; margin: 5px 0px 20px;" autocomplete="off" name="create-alias">
+  </div>
+  <div>
+    <div>Введите пароль. Очевидно, обязательное поле.</div>
+    <div style="position: relative;">
+      <img id="create-character-eye-open" src="/img/site?r=eye-open" onclick="app.creatingCharacter.eye()" class="password-eye">
+      <img id="create-character-eye-close" src="/img/site?r=eye-close" onclick="app.creatingCharacter.eye()" class="password-eye" style="display: none">
+      <input style="width: 200px; margin: 5px 0px 20px;" autocomplete="off" name="create-password">
+    </div>
+  </div>
+  <div>
+    <div>По желанию, укажите свою электронную почту. Если Вы забудете пароль, с помощью почты можно будет автоматически восстановить доступ к персонажу.</div>
+    <input style="width: 200px; margin: 5px 0px 20px;" name="mail">
+  </div>
+    <div class="centered-flex"><button name="go">Создать персонажа</button>
+    <div id="create-error" style="color: #800808; display: none"></div>
+  </div>
+</form>

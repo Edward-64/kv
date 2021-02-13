@@ -1,0 +1,29 @@
+<div class="head-corner-img head-left-corner-img"></div>
+<div class="head-corner-img head-right-corner-img"></div>
+<div class="head-stick-img"></div>
+<div class="head-stick-img head-right-stick-img"></div>
+<div id="container" class="normal-text main-text-color">
+	<div class="head-vertical-img head-left-vertical-img"></div>
+	<div class="head-vertical-img head-right-vertical-img"></div>
+	<div class="centered-flex">
+		<div style="position: relative">
+			<button id="list-of-cmds" style="margin-right: 20px;width:40px;" onclick="app.turnSavedRequests()">&equiv;</button>
+			<div id="shell-saved-request" class="show-add-content show-add-content-left" style="min-width: 200px; display: none">
+				<div id="saved-request" style="max-height: 300px;"></div>
+				<form class="centered-flex" onsubmit="app.addRequest(app.reqs.input.value); return false;"><input id="input-saved-request" autocomplete="off">&nbsp;&nbsp;<button>Добавить</button></form>
+			</div>
+		</div>
+		<form id="cmd-shell" style="position:relative;width:100%" onsubmit="app.parseMeowOnSubmit(); return false;">
+			<div id="input" class="color-of-input" style="position: absolute; margin: 2px;">&gt;</div>
+			<input id="cmder" class="cut-tree" style="padding-left: 20px;width:100%" autocomplete="off">
+		</form>
+		<button id="cmd-shell-push" style="margin-left: 40px; width:100px" onclick="app.parseMeowOnSubmit();">Мяукнуть</button>
+	</div>
+	<div style="min-height:80px;padding:10px 0px">
+		<div id="response" class="cut-tree" style="display: none"></div>
+	</div>
+	<div id="dinamic-content" class="cut-tree">
+		<div style="text-align: center"><img src="/img/site?r=logo" height="50" width="auto"></div>
+		Попробуйте мяукнуть «играть» ;)
+	</div>
+	</div>
